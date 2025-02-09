@@ -1,5 +1,8 @@
 <!-- Jane theme main style -->
-<link rel="stylesheet" href="{{ "css/style.css" | relURL }}" media="screen">
+{{ $styleOpts := dict "transpiler" "dartsass" "targetPath" "css/style.css" "vars" site.Params.style}}
+{{ $style := resources.Get "sass/jane.scss" | toCSS $styleOpts | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" media="screen"
+  crossorigin="anonymous">
 
 {{- if .Site.Params.wallpaper }}
 <style>
