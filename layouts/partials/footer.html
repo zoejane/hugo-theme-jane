@@ -7,7 +7,7 @@
       </a>
     {{- end }}
   {{- end }}
-  <a href="{{ .Site.RSSLink }}" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
+  <a href="{{ with .OutputFormats.Get "RSS" }}{{ .RelPermalink }}{{ end }}" rel="noopener" type="application/rss+xml" class="iconfont icon-rss"
     title="rss" target="_blank">
   </a>
 </div>
